@@ -149,8 +149,11 @@ type Mutation {
   login(input: LoginInput!): NewAccount!
   logout: Boolean!
   pay(input: PayInput!): PayMutations!
+  payInvoice(invoice: String!): Boolean!
+  recieveViaSwap(input: ReceiveSwapInput!): RecieveSwap!
   refreshToken: RefreshToken!
   signUp(input: SignUpInput!): NewAccount!
+  swap: Boolean!
   wallets: WalletMutations!
 }
 
@@ -199,9 +202,24 @@ enum PaymentOptionNetwork {
 }
 
 type Query {
+  getSwapQuote: Boolean!
   hello: String!
   user: User!
   wallets: WalletQueries!
+}
+
+input ReceiveSwapInput {
+  deposit_coin: String!
+  deposit_network: String!
+}
+
+type RecieveSwap {
+  coin: String!
+  id: String!
+  max: String!
+  min: String!
+  network: String!
+  receive_address: String!
 }
 
 type RefreshToken {

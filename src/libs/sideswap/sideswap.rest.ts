@@ -14,13 +14,11 @@ export class SideSwapRestApi {
   }
 
   async getPriceStream(asset: string, buyBitcoin: boolean, sendAmount: number) {
-    const res = await this.client.call('subscribe_price_stream', {
+    return this.client.call('subscribe_price_stream', {
       asset,
       send_bitcoins: !buyBitcoin,
       send_amount: sendAmount,
     });
-    console.log({ res });
-    return res;
   }
 
   async startSwapWeb(input: LiquidSwapInput) {
@@ -34,15 +32,12 @@ export class SideSwapRestApi {
     });
     const parsed = startSwapWebResponse.safeParse(response);
     if (parsed.error) {
-      console.error({ response });
       throw new Error(`Failed to create swap`);
     }
     return parsed.data;
   }
 
   async swapStart(input: SideSwapSwapInput) {
-    const response = await this.client.call('swap_start', input);
-    // console.log({ response });
-    return response;
+    return this.client.call('swap_start', input);
   }
 }

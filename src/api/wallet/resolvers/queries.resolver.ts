@@ -379,10 +379,7 @@ export class WalletQueriesResolver {
 
   @ResolveField()
   async find_many(@CurrentUser() { user_id }: any) {
-    console.log({ user_id });
-    const wallets = await this.walletRepo.getAccountWallets(user_id);
-    console.log({ wallets });
-    return wallets;
+    return this.walletRepo.getAccountWallets(user_id);
   }
 
   @ResolveField()

@@ -67,7 +67,6 @@ export class SwapsResolver {
         'lq1qqvts3q67euw5w0f4sqvkwwx8ts0m52lpwh64vgde0jtx7fl5tencgw55qvqp06qajltmu763wkccch8kq6e3vx9v3h2ssf6az',
       affiliateId: 'B29CbRvPTq',
     });
-    console.log({ swap });
     return {
       id: swap.id,
       coin: swap.depositCoin,

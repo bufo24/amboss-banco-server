@@ -122,6 +122,9 @@ export class ReceiveSwapInput {
 
   @Field()
   deposit_network: string;
+
+  @Field()
+  wallet_account_id: string;
 }
 
 @ObjectType()
@@ -142,3 +145,15 @@ export class WalletSwaps {
 export type WalletSwapsParent = {
   wallet_id: string;
 };
+
+@InputType()
+export class SwapQuoteInput {
+  @Field()
+  amount: string;
+
+  @Field()
+  deposit_coin: string;
+
+  @Field()
+  deposit_network: string;
+}

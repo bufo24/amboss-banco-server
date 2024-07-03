@@ -4,7 +4,8 @@ export type ConfigSchemaType = z.infer<typeof ConfigSchema>;
 
 export const ConfigSchema = z.object({
   server: z.object({
-    domain: z.string(),
+    encryptionKey: z.string().min(64),
+    domains: z.array(z.string()),
     cookies: z.object({
       domain: z.string(),
     }),
@@ -38,4 +39,9 @@ export const ConfigSchema = z.object({
         .optional(),
     })
     .optional(),
+  sideshift: z.object({
+    url: z.string(),
+    secret: z.string(),
+    affiliateId: z.string(),
+  }),
 });
